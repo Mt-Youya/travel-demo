@@ -1,25 +1,23 @@
+import { Link } from "react-router-dom"
 import calendar from "@/assets/icons/calendar.svg?url"
 import forest from "@/assets/icons/virtual-environment-forest.svg?url"
 import styled from "styled-components"
 
-const ScCard = styled.div`
+const ScCard = styled(Link)`
     width: 400px;
     height: 400px;
     border-radius: 1rem;
     overflow: hidden;
     background-color: #fff;
+    box-shadow: 0 5px 10px 0 #7575751A;
+    cursor: pointer;
 
     .view {
         width: 100%;
         aspect-ratio: 16/9;
     }
 
-    .ellipsis-multiline {
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+   
 
     .content {
         width: 100%;
@@ -65,9 +63,10 @@ const ScCardBottom = styled.div`
     }
 `
 
-function ProjectCard({ img, title, description, days, dollar }) {
+function ProjectCard({ img, title, description, days, dollar, type, id = 3 }) {
+
     return (
-        <ScCard>
+        <ScCard to={`/${type.toLowerCase()}/detail/${id * 10}`} key={id}>
             <img className="view" src={img} />
 
             <div className="content">

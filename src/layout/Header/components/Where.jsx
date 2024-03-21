@@ -1,6 +1,8 @@
 import styled from "styled-components"
 import Souvenir from "@/assets/icons/Souvenir.svg?url"
-import { useState } from "react"
+import useTabs from "@/stores/tabs"
+import { Link } from "react-router-dom"
+import { useLocation } from "react-router"
 
 const ScWhere = styled.div`
     flex: 1;
@@ -18,7 +20,7 @@ const ScWhere = styled.div`
     }
 
     .selection {
-        padding: .75em;
+        padding: 1em;
         border-radius: .5em;
         box-shadow: var(--color-boxShadow);
     }
@@ -40,7 +42,7 @@ const ScWhere = styled.div`
         background-color: var(--color-primary);
         color: #fff;
         padding: 1em;
-        border-radius: .5em;
+        border-radius: 1em;
         box-shadow: var(--color-boxShadow);
     }
 `
@@ -82,15 +84,21 @@ const ScNavigator = styled.nav`
     }
 `
 
+export const WhereNavBars = {
+    Adventure: 1,
+    Business: 2,
+    Cultural: 3,
+    Family: 4,
+    Leisure: 5,
+    Luxury: 6,
+    Layover: 7,
+}
+
 function Where() {
+    const location = useLocation()
+    const pathname = location.pathname.split("/")[1]
 
-    const [active, setActive] = useState(0)
-
-    const navbars = ["All", "Adventure", "Business", "Cultural", "Family", "Leisure", "Luxury", "Layover"]
-
-    function handleActiveClick(idx) {
-        setActive(idx)
-    }
+    const navbars = ["Adventure", "Business", "Cultural", "Family", "Leisure", "Luxury", "Layover"]
 
     return (
         <ScWhere>
@@ -115,11 +123,12 @@ function Where() {
             </div>
             <ScNavigator>
                 <ul>
-                    {navbars.map((nav, index) =>
-                        <li key={nav} className={`${active === index ? "active" : ""}`}
-                            onClick={() => handleActiveClick(index)}
-                        >
-                            {nav}
+                    <li className={`${pathname === "home" ? "active" : ""}`}>
+                        <Link to={"/home"}> All </Link>
+                    </li>
+                    {navbars.map(nav =>
+                        <li key={nav} className={`${pathname === nav.toLowerCase() ? "active" : ""}`}>
+                            <Link to={`/${nav !== "All" ? nav.toLowerCase() : "home"}`}> {nav} </Link>
                         </li>,
                     )}
                 </ul>

@@ -1,4 +1,7 @@
 import { Link } from "react-router-dom"
+import InstagramIcon from "@/assets/icons/instagram.svg?url"
+import TwitterIcon from "@/assets/icons/twitter.svg?url"
+import FacebookIcon from "@/assets/icons/facebook.svg?url"
 import styled from "styled-components"
 import Logo from "@components/Logo"
 import QRCode from "@/assets/images/qr-code.png?url"
@@ -27,12 +30,17 @@ const ScLeft = styled.div`
             width: 70px;
             aspect-ratio: 1/1;
         }
+
+        p {
+            margin: 1rem 0;
+        }
     }
 
     .links {
         display: flex;
         justify-content: center;
         align-items: center;
+        gap: 1rem;
     }
 `
 
@@ -62,9 +70,9 @@ const ScRight = styled.div`
 `
 
 const links = [
-    { link: "https://facebook.com", icon: "", text: "Facebook" },
-    { link: "https://twitter.com", icon: "", text: "Twitter" },
-    { link: "https://instagram.com", icon: "", text: "Instagram" },
+    { link: "https://facebook.com", icon: FacebookIcon, text: "Facebook" },
+    { link: "https://twitter.com", icon: TwitterIcon, text: "Twitter" },
+    { link: "https://instagram.com", icon: InstagramIcon, text: "Instagram" },
 ]
 
 const travelLinks = [
@@ -105,7 +113,7 @@ function Footer() {
 
                     <ol className="links">
                         {links.map(({ link, icon, text }) => (
-                            <li key={text}><a href={link} target="_blank"><img src={icon} alt={text} /></a></li>
+                            <li key={text}><a href={link} target="_blank"><img src={icon} alt={text} /> </a></li>
                         ))}
                     </ol>
                 </ScLeft>

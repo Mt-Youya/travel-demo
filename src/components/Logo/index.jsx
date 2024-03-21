@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom"
 import styled from "styled-components"
 
-const ScLogo = styled.div`
+const ScLogo = styled(Link)`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,7 +23,7 @@ const ScDivider = styled.div`
 
 function Logo() {
     return (
-        <ScLogo>
+        <ScLogo to="/">
             <ol>
                 <li>we</li>
                 <ScDivider></ScDivider>

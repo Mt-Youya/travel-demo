@@ -27,6 +27,7 @@ const ScAuthor = styled.div`
         border-radius: 50%;
         width: 80px;
         aspect-ratio: 1/1;
+        box-shadow: 1px 1px 4px 2px #00000026;
     }
 
     .info {
