@@ -3,7 +3,7 @@ import calendar from "@/assets/icons/calendar.svg?url"
 import forest from "@/assets/icons/virtual-environment-forest.svg?url"
 import styled from "styled-components"
 
-const ScCard = styled.div`
+const ScCard = styled(Link)`
     width: 400px;
     height: 400px;
     border-radius: 1rem;
