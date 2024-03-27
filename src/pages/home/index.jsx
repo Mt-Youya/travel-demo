@@ -5,7 +5,7 @@ import Main from "@layout/Main"
 import ProductCategory from "./components/Product-Category.jsx"
 import Read from "./components/Read"
 import projects from "./data/projects.js"
-import ProjectCard from "@/components/Project-Card"
+import ProjectCard from "@components/Project-Card"
 import styled from "styled-components"
 
 const ScProducts = styled.section`

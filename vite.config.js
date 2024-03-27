@@ -1,4 +1,5 @@
 import { defineConfig } from "vite"
+import { fileURLToPath, URL } from "node:url"
 import { extname } from "path"
 import Inspect from "vite-plugin-inspect"
 import react from "@vitejs/plugin-react-swc"
@@ -7,22 +8,20 @@ const cssExts = [".css", ".less", ".scss", "sass", ".stylus"]
 
 // https://vitejs.dev/config/
 export default defineConfig({
-    plugins: [react(), Inspect({ build: true, outputDir: ".vite-inspect" })],
+    plugins: [react(), Inspect()],
     resolve: {
         alias: {
-            "@": "/src",
-            "@components": "/src/components",
-            "@layout": "/src/layout",
-            "@pages": "/src/pages",
-            "@styles": "/src/styles",
-            "@utils": "/src/utils",
+            "@": fileURLToPath(new URL("./src", import.meta.url)),
+            "@components": fileURLToPath(new URL("./src/components", import.meta.url)),
+            "@layout": fileURLToPath(new URL("./src/layout", import.meta.url)),
+            "@pages": fileURLToPath(new URL("./src/pages", import.meta.url)),
+            "@styles": fileURLToPath(new URL("./src/styles", import.meta.url)),
+            "@utils": fileURLToPath(new URL("./src/utils", import.meta.url)),
         },
     },
     server: {
-        open: true,
         port: 3030,
     },
-
     build: {
         outDir: "dist",
         assetsDir: "assets",
